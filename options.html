@@ -1,0 +1,184 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="color-scheme" content="dark light" />
+  <title>X-Profile-Metrics-Inline</title>
+  <link rel="stylesheet" href="options.css" />
+</head>
+<body>
+  <main class="wrap">
+    <header class="app-header">
+      <div class="app-headings">
+        <div class="app-header-inner">
+          <img class="app-icon" src="icon.png" alt="" />
+          <div>
+            <div class="titleRow">
+              <h1>X-Profile-Metrics-Inline</h1>
+            </div>
+            <div class="subtitle tagline">Made by Merlin Pirs · <a class="repo-link" href="https://github.com/user/repo" target="_blank" rel="noopener noreferrer">github.com/user/repo</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="header-toggle-card">
+        <label class="toggle header-toggle" title="Enable/disable the plugin">
+          <span class="toggle-text">Plugin enabled</span>
+          <input type="checkbox" id="enabled" />
+          <span class="toggle-ui" aria-hidden="true"></span>
+        </label>
+      </div>
+    </header>
+
+
+    <section class="card">
+      <h2>Follower color scale</h2>
+      <div class="colorChips">
+        <label class="colorChip" data-key="gt1m" data-min="1000001" data-max="5000000">
+          <span class="range">&gt; 1M</span>
+          <input type="color" id="colorGt1m" />
+        </label>
+        <label class="colorChip" data-key="k250to1m" data-min="250000" data-max="1000000">
+          <span class="range">1M → 250K</span>
+          <input type="color" id="colorK250to1m" />
+        </label>
+        <label class="colorChip" data-key="k25to250k" data-min="25000" data-max="250000">
+          <span class="range">250K → 25K</span>
+          <input type="color" id="colorK25to250k" />
+        </label>
+        <label class="colorChip" data-key="k5to25k" data-min="5000" data-max="25000">
+          <span class="range">25K → 5K</span>
+          <input type="color" id="colorK5to25k" />
+        </label>
+        <label class="colorChip" data-key="k1to5k" data-min="1000" data-max="5000">
+          <span class="range">5K → 1K</span>
+          <input type="color" id="colorK1to5k" />
+        </label>
+        <label class="colorChip" data-key="lt1k" data-min="0" data-max="999">
+          <span class="range">&lt; 1K</span>
+          <input type="color" id="colorLt1k" />
+        </label>
+      </div>
+
+    </section>
+
+    <section class="card">
+      <h2>Rate limits and cache</h2>
+
+      <div class="grid2">
+        <label class="field field-inline">
+          <span class="field-label">Max requests per minute</span>
+          <input type="number" id="maxRequestsPerMinute" min="1" max="120" />
+        </label>
+
+        <label class="field field-inline">
+          <span class="field-label">Cache TTL (days)</span>
+          <input type="number" id="cacheTTLdays" min="1" max="365" />
+        </label>
+      </div>
+
+      <div class="actions actions-inline">
+        <button id="exportCache">Export JSON</button>
+        <button id="importCache">Import JSON</button>
+        <div id="status" class="status status-inline" aria-live="polite">Loading…</div>
+      </div>
+    </section>
+
+    <details class="card advanced" id="advancedDetails">
+      <summary class="details-summary">Advanced</summary>
+
+      <div class="advanced-body">
+        <div class="advanced-block">
+          <h2>Display</h2>
+          <div class="grid">
+            <label class="toggle">
+              <input type="checkbox" id="showFollowers" />
+              <span class="toggle-ui" aria-hidden="true"></span>
+              <span class="toggle-text">Show followers</span>
+            </label>
+            <label class="toggle">
+              <input type="checkbox" id="showFollowing" />
+              <span class="toggle-ui" aria-hidden="true"></span>
+              <span class="toggle-text">Show following</span>
+            </label>
+            <label class="toggle">
+              <input type="checkbox" id="showJoined" />
+              <span class="toggle-ui" aria-hidden="true"></span>
+              <span class="toggle-text">Show joined year</span>
+            </label>
+            <label class="toggle">
+              <input type="checkbox" id="showLocation" />
+              <span class="toggle-ui" aria-hidden="true"></span>
+              <span class="toggle-text">Show location</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="grid2">
+          <label class="field">
+            <span class="field-label">Theme</span>
+            <select id="themeMode">
+              <option value="auto">Auto</option>
+              <option value="dark">Dark</option>
+              <option value="light">Light</option>
+            </select>
+            <span class="field-help">Auto follows your system preference; Dark is the fallback.</span>
+          </label>
+
+          <label class="field">
+            <span class="field-label">Rate limit pause (minutes)</span>
+            <input type="number" id="rateLimitPauseMinutes" min="1" max="60" />
+            <span class="field-help">How long to pause scraping after detecting HTTP 429.</span>
+          </label>
+
+          <label class="field">
+            <span class="field-label">Scroll pause (ms)</span>
+            <input type="number" id="scrollPauseMs" min="100" max="5000" step="50" />
+            <span class="field-help">Wait after scrolling stops before scraping visible authors.</span>
+          </label>
+
+          <label class="field">
+            <span class="field-label">Prefetch batch size</span>
+            <input type="number" id="prefetchBatchSize" min="10" max="1000" step="10" />
+            <span class="field-help">How many usernames to request per flush.</span>
+          </label>
+
+          <label class="field">
+            <span class="field-label">Max concurrent scrape tabs</span>
+            <input type="number" id="maxConcurrentTabs" min="1" max="10" />
+            <span class="field-help">Parallel tabs used to scrape profiles.</span>
+          </label>
+
+          <label class="field">
+            <span class="field-label">Profile load timeout (ms)</span>
+            <input type="number" id="scrapeTabLoadTimeoutMs" min="3000" max="60000" step="500" />
+            <span class="field-help">Max time to wait for a profile tab to finish loading.</span>
+          </label>
+
+          <label class="field">
+            <span class="field-label">Profile header wait (ms)</span>
+            <input type="number" id="scrapeProfileHeaderWaitMs" min="1000" max="60000" step="500" />
+            <span class="field-help">Extra wait for the profile header to appear.</span>
+          </label>
+
+          <label class="field">
+            <span class="field-label">Unavailable TTL (hours)</span>
+            <input type="number" id="unavailableTTLhours" min="1" max="168" />
+            <span class="field-help">How long to keep “Unavailable” entries before retrying.</span>
+          </label>
+        </div>
+
+        <div class="actions actions-inline danger-actions">
+          <button id="clearCache" class="btn-danger">DELETE ALL ENTRIES</button>
+        </div>
+      </div>
+
+    </details>
+
+
+	    <p class="foot">This extension only scrapes profile pages using your authenticated session. No data leaves your device.</p>
+  </main>
+
+  <script src="shared.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>
