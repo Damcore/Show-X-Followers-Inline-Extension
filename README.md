@@ -1,7 +1,12 @@
 # X-Profile-Metrics-Inline
 Shows follower, following, joined year, and location inline on x.com timelines by scraping profile pages in background tabs using your logged-in session; results are cached locally. You will see tabs open and close in the background while you browse—this is expected and how the data is collected, and the amount of tab activity can be tuned in settings.
 
-![Inline profile metrics on X timeline](assets/screenshots/x-profile-metrics-inline.png)
+<table>
+  <tr>
+    <td><img src="assets/screenshots/x-profile-metrics-inline.png" alt="Inline profile metrics on X timeline" height="320"></td>
+    <td><img src="assets/screenshots/x-profile-metrics-inline-2.png" alt="Inline profile metrics on X timeline (alt view)" height="320"></td>
+  </tr>
+</table>
 
 ## Use it to shape your feed
 A simple heuristic you can use: avoid following accounts with more than 1 million followers to keep the feed less generic and reduce what the algorithm pushes because “everyone else” follows it. The customizable color scale makes it easy to see what impact an account makes.
