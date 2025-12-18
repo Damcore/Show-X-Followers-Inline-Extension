@@ -3,8 +3,8 @@ Shows follower, following, joined year, and location inline on x.com timelines b
 
 <table>
   <tr>
-    <td><img src="assets/screenshots/x-profile-metrics-inline.png" alt="Inline profile metrics on X timeline" height="320"></td>
-    <td><img src="assets/screenshots/x-profile-metrics-inline-2.png" alt="Inline profile metrics on X timeline (alt view)" height="320"></td>
+    <td><img src="assets/screenshots/example-post.png" alt="Example post with inline profile metrics" height="400"></td>
+    <td><img src="assets/screenshots/plugin-settings.png" alt="Plugin settings view" height="400"></td>
   </tr>
 </table>
 
