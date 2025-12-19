@@ -268,6 +268,44 @@ async function importCache(){
   input.click();
 }
 
+let activeColorInput = null;
+function setupColorPickerToggle(){
+  const colorInputs = [
+    'colorGt1m','colorK250to1m','colorK25to250k','colorK5to25k','colorK1to5k','colorLt1k'
+  ].map(id => $(id)).filter(Boolean);
+
+  colorInputs.forEach(input => {
+    input.addEventListener('click', (event) => {
+      if (activeColorInput === input){
+        event.preventDefault();
+        event.stopPropagation();
+        input.blur();
+        activeColorInput = null;
+        return;
+      }
+      activeColorInput = input;
+    });
+    input.addEventListener('change', () => {
+      if (activeColorInput === input) activeColorInput = null;
+    });
+    input.addEventListener('blur', () => {
+      if (activeColorInput === input) activeColorInput = null;
+    });
+  });
+
+  document.addEventListener('pointerdown', (event) => {
+    if (activeColorInput && !activeColorInput.contains(event.target)){
+      activeColorInput = null;
+    }
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && activeColorInput){
+      activeColorInput.blur();
+      activeColorInput = null;
+    }
+  });
+}
+
 [
   'enabled','showFollowers','showFollowing','showJoined','showLocation',
   'themeMode','maxRequestsPerMinute','cacheTTLdays',
@@ -278,5 +316,6 @@ async function importCache(){
 $('clearCache').addEventListener('click', clearCache);
 $('exportCache').addEventListener('click', exportCache);
 $('importCache').addEventListener('click', importCache);
+setupColorPickerToggle();
 
 load().catch(()=>{});

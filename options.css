@@ -66,15 +66,15 @@ body{
   popup within clamp (<=600px tall) while keeping it usable in a compact footprint.
 */
 html.popup, body.popup{
-  width: 510px;
-  min-width: 510px;
-  max-width: 510px;
+  width: 540px;
+  min-width: 540px;
+  max-width: 540px;
   height: 600px;
   min-height: 600px;
 }
 
 .wrap{
-  max-width: 510px;
+  max-width: 540px;
   margin: 0 auto;
   padding: 6px var(--content-pad) 18px;
 }

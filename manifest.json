@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "X-Profile-Metrics-Inline",
-  "version": "0.9.11",
+  "version": "0.9.12",
   "description": "Inline profile metrics (followers/following/joined year/location) on X timeline posts by scraping x.com profile pages using your logged-in session.",
   "permissions": [
     "alarms",
