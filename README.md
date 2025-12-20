@@ -16,6 +16,12 @@ A simple heuristic you can use: avoid following accounts with more than 1 millio
 - Colors **only the followers number** using your chosen color scale.
 - Stores results in a local cache (Chrome extension storage) so repeated authors are fast.
 
+## Install (Releases)
+1. Download the `.crx` file from the GitHub Releases page.
+2. Chrome → `chrome://extensions`
+3. Enable **Developer mode**.
+4. Drag and drop the `.crx` file onto the Extensions page and confirm the install.
+
 ## Install (unpacked)
 1. Download and unzip the extension.
 2. Chrome → `chrome://extensions`
