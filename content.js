@@ -261,17 +261,9 @@
 
     const user = state?.user || null;
 
-    if (isPaused()){
-      const missing = !user
-        || user.unavailable
-        || user.followers == null
-        || user.following == null
-        || user.joinedYear == null
-        || user.location == null;
-      if (missing){
-        lineEl.textContent = rateLimitMessage();
-        return;
-      }
+    if (isPaused() && !user){
+      lineEl.textContent = rateLimitMessage();
+      return;
     }
 
     if (!user){
